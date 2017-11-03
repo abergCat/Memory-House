@@ -1,0 +1,40 @@
+<div> 
+	<div class="btn btn-default pull-left m-r" ng-click="tag()">{{displayText}}</div>
+	<div class="modal fade" style="z-index:9999999" id="selectTag{{tagItem}}" tabindex="-1" role="dialog" aria-labelledby="myModalLal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-fromleft" style="margin:0 auto">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">请选择</h3>
+				</div>
+				
+				<div class="modal-body bfbody click-body">
+					<div class="" style="overflow:hidden">
+						<div ng-repeat="item in lab.choosed track by $index" class="pull-left m-r b-a m-b" style="padding:5px 10px" ng-click="cleThis(item)">
+							{{item.name}}<i class="fa fa-times"></i>
+						</div>
+					</div>
+					
+					<div class="b-t" style="overflow:hidden;padding-top:10px">
+						<div ng-repeat="item in data">
+							<button class="pull-left m-r b-a m-b btn btn-default" style="padding:5px 10px" ng-click="selThis(item)"  ng-class="{'btn-info':arrayIndexOf(lab.choosedID, item.id) > -1}">
+								{{item.name}}
+							</button>
+						</div>
+					</div>	
+
+					<div class="b-t" style="overflow:hidden;padding-top:10px" ng-hide="no">
+						<label><input type="checkbox" ng-click="isOther=!isOther" />其他：</label>
+						<input class="form-control" placeholder="输入多项标签请用逗号分隔" id="others{{tagItem}}" ng-disabled="!isOther"/>
+					</div>
+
+				</div>
+				
+				<div class="modal-footer" style="padding:15px 40px">
+					<a class="btn btn-default" ng-click="sureTag()" ng-disabled='formSelectUser.$invalid'>确定</a>
+					<a class="btn btn-default" data-dismiss="modal" ng-click="cancelTag()">取消</a>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
